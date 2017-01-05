@@ -6,3 +6,4 @@
 # outputs
 *.md
 *.html
+.Rproj.user

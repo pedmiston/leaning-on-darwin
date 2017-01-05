@@ -1,33 +1,190 @@
+Leaning on Darwin
+=================
+css: theme.css
+```{r, config, echo = FALSE}
+library(knitr)
+opts_chunk$set(
+  echo = FALSE,
+  fig.align = "center",
+  fig.width = 8,
+  fig.height = 8
+)
+read_chunk("1-leaning-on-darwin/figs.R")
+```
+
+```{r, setup}
+```
+
+The role of iteration in the origins of onomatopoeia  
+and the growth of Wikipedia articles.
+
+Leaning on Darwin
+=================
+- **Iteration** is "the repetition of a process or utterance."
+- Can iteration be trusted?
+
+<p><a href="https://commons.wikimedia.org/wiki/File:Charles_Robert_Darwin_by_John_Collier.jpg#/media/File:Charles_Robert_Darwin_by_John_Collier.jpg"><img src="https://upload.wikimedia.org/wikipedia/commons/3/3e/Charles_Robert_Darwin_by_John_Collier.jpg" alt="Three-quarter portrait of a senior Darwin dressed in black before a black background. His face and six-inch white beard are dramatically lit from the side. His eyes are shaded by his brows and look directly and thoughtfully at the viewer." height="400"></a>
+
+<aside class="notes">
+What do I mean by "Leaning on Darwin"? Well, the word of the day
+is "iteration", which Webster defines as the repetition of a
+process or utterance.
+
+For Darwin, the iterative process he was interested in was
+biological reproduction, although he did talk about the
+evolution of other things like culture and language.
+
+His key insight was that if certain conditions hold at each generation of an
+iterative process, we can trust that process to systematically and incrementally
+move in a predictable direction, and because of this we can use iteration as an
+explanation for why things change.
+
+The change we typically think about when it comes to Darwin
+is genetic change: the idea that simply reproducing genetic
+material over and over can be trusted to result in organisms
+that are more and more adapted to their environment.
+
+But this basic idea is not specific to genetic evolution,
+and today I'm going to try to convince you that we can
+trust iteration to shape certain kinds of change that
+are more interesting to psychologists.
+</aside>
+
+Outline
+=======
+- The origins of onomatopoeia
+- The growth of Wikipedia articles
+
+<aside class="notes">
+I'm going to talk about two ongoing projects that investigate
+how things change as a function of iteration, and I'm going 
+to try to convince you that iteration is a meaningful explanation
+for what is going on in these cases.
+
+The first project is on the origins of onomatopoeia, words
+that sound like what they mean, and the goal there is to determine
+if iteration can explain where these sorts of words may come
+from.
+
+The second project is on the growth of Wikipedia articles.
+Writing a Wikipedia article is an iterative process, and
+I'm going to try to see if thinking about iteration
+helps explain how Wikipedia articles change over time,
+in particular the extent that they improve in quality over time.
+</aside>
+
+Goals
+=====
+- Discussion! Feedback! Reviews!
+- Introduce the concept of _iterated cognition_.
+
+Other names for iterated cognition
+==================================
+- evolutionary psychology
+- cultural evolution
+
+<aside class="notes">
+I would love it if I could just call this "evolutionary psychology"
+but unfortunately that term has been co-opted by those that believe
+that the evolution of cognitive abilities reduces to the problem
+of genetic evolution and reproductive fitness, which tends to come
+with it the idea that the brain evolves domain-specific, modular
+abilities, so unfortunately I'm going to have to stay away from that 
+term for a while.
+
+The better name for this stuff is probably cultural evolution,
+at least that's how it shows up in the literature, but personally
+I think any time you talk about culture and evolution it's both
+too big to ever study in the lab, and it's too general, so people
+start to challenge your premises, and over interpret the analogy
+between culture and genes.
+
+I prefer to talk about iteration because it doesn't assume anything
+about how things are changing over time, all it points out
+is that things are being repeated. And I'd rather talk about
+cognition than culture because I want to talk about these issues
+at a scale that I can understand in the lab with experiments,
+and the kinds of experiments I'm interested in concern
+making people do stuff with their brains.
+</aside>
+
+Iterated cognition
+==================
+What **individuals** can do and learn to do today critically depends on what **others** were able to do yesterday.
+
+- Conformity <small>(Jacobs & Campbell, 1961, _J Abnorm Soc Psychol_)</small>
+- Imitation <small>(Flynn, 2008, _Phil Trans R Soc B_)</small>
+
+<aside class="notes">
+</aside>
+
+Conformity
+==========
+type: bigquote
+_The perpetuation of an arbitrary tradition through several generations of a laboratory microculture._
+> So labile is the autokinetic experience or at least the translation of it into
+  judgments of linear extent, that one reading the reports of studies employing
+  it might expect that an arbitrary group norm once established would be passed
+  on indefinitely without diminution;
+  
+<aside class="notes">
+</aside>
+
+Conformity in the autokinetic effect
+====================================
+type: center
+```{r, jacobs-etal-fig2-setup}
+```
+
+Predicting after the confederate leaves
+=======================================
+type: center
+```{r, jacobs-etal-fig2-preds}
+```
+
+Gradual decline to normative response
+=====================================
+type: center
+```{r, jacobs-etal-fig2-data}
+```
+
+Overimitation in kids
+=====================
+type: center
+![](img/flynn_2008/puzzle-box.png)
+
+Pruning of irrelevant actions
+=============================
+type: center
+![](img/flynn_2008/data.png)
+
+Can we trust iteration to...
+============================
+- reduce conformity to an arbitrary norm?
+- prune irrelevant steps in a process?
+- **incrementally make imitations more wordlike?**
+- **result in better and better Wikipedia articles?**
+
 The origin of onomatopoeia
 ==========================
-css: theme.css
 
 Pierce Edmiston  
 with Marcus Perlman and Gary Lupyan.
 
-```{r, config, echo = FALSE, message = FALSE}
-library(knitr)
-opts_chunk$set(
-  echo = FALSE,
-  message = FALSE,
-  fig.width = 9,
-  fig.align = "center",
-  cache = FALSE
-)
-
+```{r}
 read_chunk("2-word-origins/setup.R")
 read_chunk("2-word-origins/data.R")
 read_chunk("2-word-origins/models.R")
 read_chunk("2-word-origins/plots.R")
 ```
 
-```{r, setup}
+```{r setup}
 ```
 
-```{r, data}
+```{r data}
 ```
 
-```{r, models, cache = TRUE}
+```{r models, cache = TRUE}
 ```
 
 Bouba/kiki effect
@@ -743,3 +900,74 @@ Early stages
 - What's the acoustic difference between subsequent imitations?
 - How can we make the interactions more communicative?
 - What other sorts of iterated signals exhibit systematic change?
+
+Selection pressures in the growth of Wikipedia articles
+=======================================================
+
+
+Wikipedia is alive
+==================
+- [edits](https://tools.wmflabs.org/wmcounter/)
+- [new articles](https://tools.wmflabs.org/wmcharts/wmchart0002.php)
+- [deletions and restorations](http://tools.wmflabs.org/wmcharts/wmchart0004.php)
+- [traffic](http://www.alexa.com/siteinfo/wikipedia.org)
+
+Claims
+======
+- Wikipedia articles don't just get bigger, they also get **better**.
+- Articles get better because Wikipedia is an **evolutionary system**.
+
+<aside class="notes">
+</aside>
+
+What is an evolutionary system?
+===============================
+- An iterative process that yields better and better solutions to a problem (e.g., genetic reproduction).
+- Evolution requires **variation** and **selection**.
+
+<aside class="notes">
+</aside>
+
+What's the alternative?
+=======================
+type: center
+![](img/logo.gif)
+
+Is Wikipedia getting better?
+============================
+type: bigquote
+> My favorite way of checking this is to "click random article" on 10 articles, and go back and look at them a year ago, 5 years ago, 10 years ago. Every time I have tried, it's unambiguous: Wikipedia is getting better by this test. -- Jimbo Wales
+
+Why biological evolution?
+=========================
+Biology originated the idea of an ever-changing fitness landscape.
+
+![](img/fitness-landscape.png)
+
+<aside class="notes">
+</aside>
+
+E. coli long-term evolution experiment
+======================================
+type: center
+
+![](img/elena_lenski/fitness.png)
+
+> There is no upper limit on fitness  
+> even in a constant environment.
+
+===
+type: center
+![](img/article-quality.png)
+
+The BOLD, revert, discuss cycle
+===============================
+type: center
+<p><a href="https://commons.wikimedia.org/wiki/File:BOLD_revert_discuss.svg#/media/File:BOLD_revert_discuss.svg"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/BOLD_revert_discuss.svg/1200px-BOLD_revert_discuss.svg.png" alt="BOLD revert discuss.svg"></a>
+
+Hypothesis
+==========
+The process of editing Wikipedia articles will reveal incremental and relative
+improvements in article quality at each generation.
+
+<!-- Visualizing article revision histories -->
