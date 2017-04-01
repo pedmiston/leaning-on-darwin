@@ -1,6 +1,9 @@
-Leaning on Darwin
-=================
+The role of iteration in cultural evolution
+===========================================
 css: theme.css
+
+Using evolutionary principles to make sense of word origins, problem solving, and the growth of Wikipedia articles
+
 ```{r, config, echo = FALSE}
 library(knitr)
 opts_chunk$set(
@@ -15,20 +18,16 @@ read_chunk("1-leaning-on-darwin/figs.R")
 ```{r, setup}
 ```
 
-The role of iteration in the origins of onomatopoeia  
-and the growth of Wikipedia articles.
-
-Leaning on Darwin
-=================
+Cultural evolution
+==================
 - **Iteration** is "the repetition of a process or utterance."
 - Can iteration be trusted?
 
-<p><a href="https://commons.wikimedia.org/wiki/File:Charles_Robert_Darwin_by_John_Collier.jpg#/media/File:Charles_Robert_Darwin_by_John_Collier.jpg"><img src="https://upload.wikimedia.org/wikipedia/commons/3/3e/Charles_Robert_Darwin_by_John_Collier.jpg" alt="Three-quarter portrait of a senior Darwin dressed in black before a black background. His face and six-inch white beard are dramatically lit from the side. His eyes are shaded by his brows and look directly and thoughtfully at the viewer." height="400"></a>
+![](img/darwin-dark.jpg)
 
 <aside class="notes">
-What do I mean by "Leaning on Darwin"? Well, the word of the day
-is "iteration", which Webster defines as the repetition of a
-process or utterance.
+The word of the day is "iteration", which Webster defines
+as the repetition of a process or utterance.
 
 For Darwin, the iterative process he was interested in was
 biological reproduction, although he did talk about the
@@ -49,6 +48,15 @@ and today I'm going to try to convince you that we can
 trust iteration to shape certain kinds of change that
 are more interesting to psychologists.
 </aside>
+
+Cherry-picking
+==============
+Under what conditions can iteration be trusted?
+- Positive selection pressures
+- Guided (and unguided) selection
+
+Experimental evolution
+======================
 
 Outline
 =======
@@ -122,11 +130,9 @@ Conformity
 ==========
 type: bigquote
 _The perpetuation of an arbitrary tradition through several generations of a laboratory microculture._
-> So labile is the autokinetic experience or at least the translation of it into
-  judgments of linear extent, that one reading the reports of studies employing
-  it might expect that an arbitrary group norm once established would be passed
-  on indefinitely without diminution;
-  
+> So labile is the autokinetic experience ... that one might expect an arbitrary
+  group norm once established would be passed on indefinitely.
+
 <aside class="notes">
 </aside>
 
