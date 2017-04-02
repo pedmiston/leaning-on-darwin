@@ -1,0 +1,45 @@
+---
+output: beamer_presentation
+---
+
+# Cultural evolution
+
+Using evolutionary principles to make sense of  
+**word origins**,  
+**problem solving**, and  
+**the growth of Wikipedia articles**.
+
+Pierce Edmiston  
+<pedmiston@wisc.edu>
+
+```{r, include=FALSE}
+library(knitr)
+opts_chunk$set(
+  echo=FALSE,
+  message=FALSE,
+  error=FALSE,
+  results="hide"
+)
+
+library(crotchet)
+library(wikischolarlib)
+library(gridExtra)
+```
+
+# Unifying theme
+
+- **Iteration** is "the repetition of a process or utterance."
+- When does iteration lead to predictable outcomes?
+
+# The growth of Wikipedia articles
+
+```{r}
+grid.arrange(
+  read_graphviz("brdc", "wikischolarlib"),
+  read_graphviz("edit-tree", "wikischolarlib"),
+  nrow = 1,
+  widths = c(0.4, 0.6)
+)
+```
+
+

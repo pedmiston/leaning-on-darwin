@@ -1,9 +1,11 @@
-.DS_Store
+.Rproj.user
 *cache/
 *figure/
-.Rproj.user/
 
 # outputs
 *.md
 *.html
-.Rproj.user
+*.pdf
+
+# env
+.DS_Store
