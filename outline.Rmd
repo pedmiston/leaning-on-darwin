@@ -104,6 +104,31 @@ grid.arrange(
 ```{r category-learning}
 ```
 
+# Is Wikipedia getting better?
+
+> My favorite way of checking this is to "click random article" on 10 articles, and go back and look at them a year ago, 5 years ago, 10 years ago. Every time I have tried, it's unambiguous: Wikipedia is getting better by this test. -- Jimbo Wales
+
+# Reasons Wikipedia is hard to measure
+
+- Size
+- Expertise
+- Edits
+
+# Wikipedia is alive
+
+- [edits](https://tools.wmflabs.org/wmcounter/)
+- [new articles](https://tools.wmflabs.org/wmcharts/wmchart0002.php)
+- [deletions and restorations](http://tools.wmflabs.org/wmcharts/wmchart0004.php)
+- [traffic](http://www.alexa.com/siteinfo/wikipedia.org)
+
+# Wikipedians
+
+- 140,000 active users (< 30 days)
+- Vandalism detection is highly automated.
+- New editors do not like getting reverted.
+- All editors are protective of their own edits.
+- Chance of being reverted doesn't change.
+
 # The growth of Wikipedia articles
 
 ```{r}
@@ -115,14 +140,63 @@ grid.arrange(
 )
 ```
 
+# Wikipedia article quality
 
-# 
+```{r wikipedia-quality}
+```
 
-# Bouba/kiki effect
+# Future directions
 
-<p><a href="https://commons.wikimedia.org/wiki/File:Booba-Kiki.svg#/media/File:Booba-Kiki.svg"><img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Booba-Kiki.svg" alt="Booba-Kiki.svg" height="112" width="220"></a>
+- Edit quality models
+- Separate purifying from positive selection
+- Open source software projects
 
-- Some words might begin with meanings everyone agrees on.
-- Illustrates the general phenomenon of _iconicity_.
-- Criticized for being a handpicked example.
-- What's the generative process for words like bouba and kiki?
+# Problem solving
+
+`something about crows`
+
+# Team types
+
+```{r strategies}
+draw_graphviz("team-structures", "totems")
+```
+
+# Innovation landscape
+
+```{r landscape}
+grid.newpage()
+grid.draw(read_graphviz_with_images("landscape-sample", "totems"))
+```
+
+# Number of innovations
+
+```{r totems-inventory}
+```
+
+# Solving the problem differently
+
+- Effectiveness (guesses per invention)
+- Redundancy (non-unique guesses)
+
+# Effectiveness
+
+# Redundancy
+
+# Prediction
+
+```{r strategies-exp2}
+draw_graphviz("team-structures-exp2", "totems")
+```
+
+# Mountain climbers
+
+# Summary
+
+Using evolutionary principles to make sense of  
+**word origins**,  
+**problem solving**, and  
+**the growth of Wikipedia articles**.
+
+Pierce Edmiston  
+<pedmiston@wisc.edu>  
+[github.com/pedmiston/leaning-on-darwin](https://github.com/pedmiston/leaning-on-darwin)

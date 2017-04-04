@@ -9,7 +9,7 @@ ylim_gts <- c(0.15, 0.75)
 
 scale_x_block_ix <- scale_x_continuous("Block number (24 trials per block)",
                                        breaks = 1:4)
-scale_y_rt <- scale_y_continuous("Reaction time (msec)")
+scale_y_rt <- scale_y_continuous("Reaction time (ms)")
 scale_color_message_label <- scale_color_manual(
   "Transcription of",
   labels = c("Sound effect", "First generation imitation", "Last generation imitation"),
@@ -65,8 +65,8 @@ gg_similarity_judgments <- ggplot(similarity_judgments_means) +
   scale_shape_discrete("") +
   coord_cartesian(ylim = c(-0.6, 0.8)) +
   base_theme +
-  theme(legend.position = c(0.1, 0.85)) +
-  ggtitle("Acoustic similarity increases over generations")
+  theme(legend.position = c(0.1, 0.86)) +
+  ggtitle("Acoustic similarity increases")
 
 
 data("transcription_distances")
@@ -98,14 +98,14 @@ gg_distance <- ggplot(transcription_distances) +
   geom_errorbar(aes(ymin = distance - se, ymax = distance + se),
                 data = orthographic_distance_preds,
                 size = 1.4, width = 0.1) +
-  scale_x_discrete("", labels = c("First generation imitations", "Last generation imitations")) +
+  scale_x_discrete("", labels = c("First generation", "Last 3 generations")) +
   scale_y_continuous("Distance between transcriptions", breaks = seq(0, 1, by = 0.2)) +
   scale_color_manual(values = get_colors(c("blue", "green"))) +
   scale_fill_manual(values = get_colors(c("blue", "green"))) +
   coord_cartesian(ylim = c(0.0, 0.8)) +
   base_theme +
   theme(legend.position = "none") +
-  ggtitle("Transcription agreement increases over generations")
+  ggtitle("Spelling agreement increases")
 
 
 grid.arrange(
@@ -187,11 +187,11 @@ gg_match_to_seed <- ggplot(imitation_matches) +
   coord_cartesian(xlim = c(-0.2, 7.2), ylim = ylim_gts) +
   base_theme +
   theme(
-    legend.position = c(0.8, 0.85),
-    legend.key.width = unit(5, "lines"),
+    legend.position = c(0.7, 0.87),
+    legend.key.width = unit(6, "lines"),
     panel.grid.minor.x = element_blank()
   ) +
-  ggtitle("Matching imitations to seeds")
+  ggtitle("Matching imitations")
 
 
 data("transcription_matches")
@@ -235,20 +235,26 @@ preds <- cbind(x_preds, y_preds) %>%
 
 dodger <- position_dodge(width = 0.1)
 
+scale_linetype_distractors <- scale_linetype_manual(
+  "", values = c("longdash", "dotdash")
+)
+
 gg_match_transcriptions <- ggplot(preds) +
   aes(message_label_2, is_correct) +
-  geom_line(aes(color = question_type, group = question_type),
+  geom_line(aes(color = question_type, group = question_type, linetype = question_type),
             position = dodger, size = 1.4) +
   geom_linerange(aes(color = question_type, ymin = is_correct - se, ymax = is_correct + se),
                  position = dodger, size = 1.4) +
   scale_x_discrete("Generation", labels = c("First generation", "Last 3 generations")) +
   scale_y_gts_accuracy +
+  chance_line +
+  scale_linetype_distractors +
   scale_color_manual("", values = unname(colors[c("blue", "green")])) +
   coord_cartesian(ylim = ylim_gts) +
   base_theme +
-  theme(panel.grid.major.x = element_blank(),
+  theme(legend.position = "none",
         panel.grid.minor.x = element_blank()) +
-  ggtitle("Matching transcriptions to seeds")
+  ggtitle("Matching transcriptions")
 
 
 grid.arrange(
