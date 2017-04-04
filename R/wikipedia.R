@@ -1,3 +1,5 @@
+source("R/setup.R")
+
 # ---- wikipedia-quality
 library(wikischolarlib)
 data("random1000")
@@ -26,7 +28,7 @@ gg_base <- ggplot(mapping = aes(x = age, y = quality)) +
   scale_x_continuous("Age of article (years)", breaks = seq(0, 10, 2)) +
   scale_y_continuous("Quality estimate (ML)") +
   scale_color_manual(values = color_scheme) +
-  theme_minimal() +
+  base_theme +
   theme(
     legend.position = "none",
     axis.ticks = element_blank()

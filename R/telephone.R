@@ -89,6 +89,7 @@ orthographic_distance_preds <- data_frame(message_c = c(-0.5, 0.5)) %>%
   rename(distance = fit, se = se.fit) %>%
   recode_message_type()
 
+set.seed(334)
 gg_distance <- ggplot(transcription_distances) +
   aes(message_label, distance, color = message_label) +
   geom_point(aes(group = message_id),
@@ -145,7 +146,9 @@ x_preds <- expand.grid(
     generation = generation_1 + 1,
     generation_label = paste("Generation", generation)
   ) %>%
-  add_chance()
+  add_chance() %>%
+  # Drop preds that go below chance
+  filter(!(survey_type == "within" & generation > 5))
 
 transition_preds <- predictSE(imitation_matches_mod, x_preds, se = TRUE) %>%
   cbind(x_preds, .) %>%
@@ -263,6 +266,33 @@ grid.arrange(
   nrow = 1
 )
 
+# ---- invented-words
+transcription_examples <- transcription_matches %>%
+  filter(!str_detect(word, "[\ *-]")) %>%
+  mutate(word = str_to_lower(word)) %>%
+  group_by(word_category, seed_id, message_id, word, message_type) %>%
+  summarize(match_accuracy = mean(is_correct)) %>%
+  ungroup() %>%
+  group_by(word_category, seed_id, message_type) %>%
+  arrange(desc(match_accuracy), seed_id, message_type) %>%
+  mutate(rank = 1:n()) %>%
+  filter(rank == 1) %>%
+  arrange(word_category, message_type) %>%
+  select(-message_id, -match_accuracy) %>%
+  spread(message_type, word) %>%
+  ungroup() %>%
+  select(-rank) %>%
+  group_by(word_category) %>%
+  mutate(seed_id = 1:n()) %>%
+  ungroup() %>%
+  select(
+    Category = word_category,
+    Seed = seed_id,
+    `First generation` = first_gen_imitation,
+    `Last generation` = last_gen_imitation
+  )
+
+knitr::kable(transcription_examples, caption = "Examples of invented words")
 
 # ---- category-learning
 data("learning_sound_names")
@@ -326,7 +356,7 @@ rt_plot <- ggplot(first_last_gen) +
   scale_linetype_message_label_2 +
   coord_cartesian(ylim = c(600, 1200)) +
   base_theme +
-  theme(legend.position = c(0.8, 0.7),
+  theme(legend.position = c(0.75, 0.85),
         legend.key.width = unit(5, "lines"))
 
 transition_mod <- lmer(

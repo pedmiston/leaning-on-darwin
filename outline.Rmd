@@ -74,7 +74,7 @@ grid.arrange(
 )
 ```
 
-# Stabilization of imitations
+# Imitations stabilize over generations
 
 ```{r telephone-stabilization}
 ```
@@ -99,6 +99,11 @@ grid.arrange(
 ```{r guess-the-seed}
 ```
 
+# Invented words
+
+```{r invented-words, results="asis"}
+```
+
 # Category learning
 
 ```{r category-learning}
@@ -107,6 +112,8 @@ grid.arrange(
 # Is Wikipedia getting better?
 
 > My favorite way of checking this is to "click random article" on 10 articles, and go back and look at them a year ago, 5 years ago, 10 years ago. Every time I have tried, it's unambiguous: Wikipedia is getting better by this test. -- Jimbo Wales
+
+![](img/logo.gif)
 
 # Reasons Wikipedia is hard to measure
 
@@ -140,6 +147,10 @@ grid.arrange(
 )
 ```
 
+# Experimental evolution
+
+![Elena & Lenski, 2003](img/elena_lenski/fitness.png)
+
 # Wikipedia article quality
 
 ```{r wikipedia-quality}
@@ -153,7 +164,7 @@ grid.arrange(
 
 # Problem solving
 
-`something about crows`
+![Hunt & Gray, 2003](img/hunt_gray/fig4.png)
 
 # Team types
 
