@@ -1,9 +1,5 @@
 .Rproj.user
 *cache/
 
-# outputs
-*.md
-*.html
-
 # env
 .DS_Store
