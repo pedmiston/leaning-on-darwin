@@ -1,10 +1,7 @@
-# ---- setup
-library(readr)
-library(dplyr)
-library(ggplot2)
-library(grid)
+source("R/setup.R")
 
-df <- read_csv("1-leaning-on-darwin/jacobs_etal_fig2.csv")
+# ---- jacobs-etal-setup
+df <- read_csv("jacobs-etal/fig2.csv")
 
 df$is_setup <- ifelse(df$participant %in% c(0, 1, 9), 1, 0)
 df[(df$is_setup == 1) & (df$group == "experimental"), "is_setup"] <- c(1, 0)
@@ -37,7 +34,7 @@ preds <- base_plot +
   annotate("text", x = 2.3, y = 5.2, label = "hero!", fontface = "italic") +
   annotate("segment", x = 1, y = 12.1, xend = 2, yend = 4.1, arrow = trend)
 preds %+% filter(df, is_setup == 1)
-  
+
 # ---- jacobs-etal-fig2-data
 base_plot +
   geom_point(aes(shape = group, size = group)) +

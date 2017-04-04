@@ -17,19 +17,77 @@ library(knitr)
 opts_chunk$set(
   echo=FALSE,
   message=FALSE,
-  error=FALSE,
+  warning=FALSE,
+  cache=TRUE,
   results="hide"
 )
 
+library(magrittr)
 library(crotchet)
 library(wikischolarlib)
 library(gridExtra)
+
+dir("R", "*.R", full.names = TRUE) %>% sapply(read_chunk)
+```
+
+```{r setup, include=FALSE}
 ```
 
 # Unifying theme
 
 - **Iteration** is "the repetition of a process or utterance."
-- When does iteration lead to predictable outcomes?
+- When can iteration be trusted?
+
+# Evolution in the psychology department
+
+Jacobs & Campbell (1961) _J Abnorm Soc Psychol_.  
+The perpetuation of an arbitrary tradition through several generations of a laboratory microculture.
+
+```{r jacobs-etal-setup, include=FALSE}
+```
+
+# Conformity (Jacobs & Campbell, 1961)
+
+```{r jacobs-etal-fig2-setup}
+```
+
+# Conformity (Jacobs & Campbell, 1961)
+
+```{r jacobs-etal-fig2-preds}
+```
+
+# Conformity (Jacobs & Campbell, 1961)
+
+```{r jacobs-etal-fig2-data}
+```
+
+# Telephone game
+
+```{r telephone-setup, include=FALSE}
+```
+
+```{r}
+grid.arrange(
+  read_image("collect-imitations-gui", "wordsintransition"),
+  read_graphviz("definitions", "wordsintransition"),
+  nrow = 1
+)
+```
+
+# Stabilization of imitations
+
+```{r telephone-stabilization}
+```
+
+# Guess the seed
+
+```{r guess-the-seed}
+```
+
+# Category learning
+
+```{r category-learning}
+```
 
 # The growth of Wikipedia articles
 
