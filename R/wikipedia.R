@@ -80,7 +80,7 @@ quality_by_generations_plot <- (gg_base %+% oldest) +
              alpha = 0.4, color = color_scheme[1]) +
   geom_line(data = generations_preds,
             color = color_scheme[2], size = 1.2) +
-  scale_x_log10("Generations of edits") +
+  scale_x_log10("Generations of edits", breaks = c(1, 10, 100, 1000)) +
   ggtitle("Quality by generations of edits")
 
 grid.arrange(

@@ -292,7 +292,7 @@ transcription_examples <- transcription_matches %>%
     `Last generation` = last_gen_imitation
   )
 
-knitr::kable(transcription_examples, caption = "Examples of invented words")
+knitr::kable(transcription_examples)
 
 # ---- category-learning
 data("learning_sound_names")
@@ -357,7 +357,8 @@ rt_plot <- ggplot(first_last_gen) +
   coord_cartesian(ylim = c(600, 1200)) +
   base_theme +
   theme(legend.position = c(0.75, 0.85),
-        legend.key.width = unit(5, "lines"))
+        legend.key.width = unit(5, "lines")) +
+  ggtitle("Learning rates")
 
 transition_mod <- lmer(
   rt ~ block_transition_c * message_c + block_ix + (block_ix|subj_id),
@@ -389,7 +390,8 @@ gg_transition <- ggplot(lsn_transition) +
   scale_linetype_message_label_2 +
   coord_cartesian(ylim = c(600, 1200)) +
   base_theme +
-  theme(legend.position = "none")
+  theme(legend.position = "none") +
+  ggtitle("Cost to generalization")
 
 
 grid.arrange(
