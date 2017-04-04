@@ -65,7 +65,8 @@ gg_similarity_judgments <- ggplot(similarity_judgments_means) +
   scale_shape_discrete("") +
   coord_cartesian(ylim = c(-0.6, 0.8)) +
   base_theme +
-  theme(legend.position = c(0.1, 0.85))
+  theme(legend.position = c(0.1, 0.85)) +
+  ggtitle("Acoustic similarity increases over generations")
 
 
 data("transcription_distances")
@@ -103,7 +104,8 @@ gg_distance <- ggplot(transcription_distances) +
   scale_fill_manual(values = get_colors(c("blue", "green"))) +
   coord_cartesian(ylim = c(0.0, 0.8)) +
   base_theme +
-  theme(legend.position = "none")
+  theme(legend.position = "none") +
+  ggtitle("Transcription agreement increases over generations")
 
 
 grid.arrange(
@@ -121,10 +123,6 @@ imitation_matches %<>%
   recode_generation() %>%
   recode_survey_type() %>%
   add_chance()
-
-# q_true_seed <- read_graphviz("true-seed", "wordsintransition")
-# q_category_match <- read_graphviz("category-match", "wordsintransition")
-# q_specific_match <- read_graphviz("specific-match", "wordsintransition")
 
 imitation_matches_overall_mod <- glmer(
   is_correct ~ offset(chance_log) + generation_1 + (generation_1|chain_name/seed_id),
@@ -192,7 +190,8 @@ gg_match_to_seed <- ggplot(imitation_matches) +
     legend.position = c(0.8, 0.85),
     legend.key.width = unit(5, "lines"),
     panel.grid.minor.x = element_blank()
-  )
+  ) +
+  ggtitle("Matching imitations to seeds")
 
 
 data("transcription_matches")
@@ -212,7 +211,9 @@ transcription_matches %<>%
   )
 
 acc_mod <- glmer(
-  is_correct ~ offset(chance_log) + question_c * message_c + (question_c * message_c|subj_id),
+  is_correct ~ offset(chance_log) + question_c * message_c + 
+    (question_c * message_c|subj_id) +
+    (1|word_category/message_id),
   family = binomial, data = transcription_matches
 )
 
@@ -232,24 +233,22 @@ preds <- cbind(x_preds, y_preds) %>%
   recode_message_type() %>%
   left_join(message_labels)
 
+dodger <- position_dodge(width = 0.1)
+
 gg_match_transcriptions <- ggplot(preds) +
-  aes(question_c, is_correct) +
-  geom_bar(aes(fill = question_type), stat = "identity", width = 0.95, alpha = 0.6) +
-  geom_linerange(aes(group = question_type, ymin = is_correct - se, ymax = is_correct + se)) +
-  scale_x_continuous("Question type", breaks = c(-0.5, 0.5), labels = c("True seed", "Category match")) +
+  aes(message_label_2, is_correct) +
+  geom_line(aes(color = question_type, group = question_type),
+            position = dodger, size = 1.4) +
+  geom_linerange(aes(color = question_type, ymin = is_correct - se, ymax = is_correct + se),
+                 position = dodger, size = 1.4) +
+  scale_x_discrete("Generation", labels = c("First generation", "Last 3 generations")) +
   scale_y_gts_accuracy +
-  scale_fill_manual("", values = unname(colors[c("blue", "green")])) +
-  chance_line +
-  geom_text(aes(label = label),
-            data = data.frame(message_label_2 = "Transcription of first generation imitation",
-                              question_c = -0.7, is_correct = 0.27, label = "chance"),
-            fontface = "italic") +
+  scale_color_manual("", values = unname(colors[c("blue", "green")])) +
   coord_cartesian(ylim = ylim_gts) +
-  facet_wrap("message_label_2") +
   base_theme +
-  theme(legend.position = "none",
-        panel.grid.major.x = element_blank(),
-        panel.grid.minor.x = element_blank())
+  theme(panel.grid.major.x = element_blank(),
+        panel.grid.minor.x = element_blank()) +
+  ggtitle("Matching transcriptions to seeds")
 
 
 grid.arrange(
@@ -344,20 +343,17 @@ gg_transition <- ggplot(lsn_transition) +
   geom_linerange(aes(ymin = rt - se, ymax = rt + se),
                  data = transition_preds,
                  position = dodger, show.legend = FALSE,
-                 size = 2) +
+                 size = 1.4) +
   geom_line(aes(group = message_type, linetype = message_type),
             data = transition_preds,
-            position = dodger, size = 2) +
+            position = dodger, size = 1.4) +
   scale_x_discrete("Block transition", labels = c("Before", "After")) +
   scale_y_rt +
   scale_color_message_label_2 +
   scale_linetype_message_label_2 +
   coord_cartesian(ylim = c(600, 1200)) +
   base_theme +
-  theme(
-    legend.position = c(0.7, 0.8),
-    legend.key.width = unit(5, "lines")
-  )
+  theme(legend.position = "none")
 
 
 grid.arrange(

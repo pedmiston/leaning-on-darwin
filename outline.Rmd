@@ -10,7 +10,7 @@ Using evolutionary principles to make sense of
 **the growth of Wikipedia articles**.
 
 Pierce Edmiston  
-<pedmiston@wisc.edu>
+<pedmiston@wisc.edu>  
 
 ```{r, include=FALSE}
 library(knitr)
@@ -23,10 +23,10 @@ opts_chunk$set(
 )
 
 library(magrittr)
-library(crotchet)
-library(wikischolarlib)
 library(gridExtra)
+library(crotchet)
 
+# Read all R/*.R files in as knitr chunks
 dir("R", "*.R", full.names = TRUE) %>% sapply(read_chunk)
 ```
 
@@ -46,17 +46,17 @@ The perpetuation of an arbitrary tradition through several generations of a labo
 ```{r jacobs-etal-setup, include=FALSE}
 ```
 
-# Conformity (Jacobs & Campbell, 1961)
+# Iterated conformity (Jacobs & Campbell, 1961)
 
 ```{r jacobs-etal-fig2-setup}
 ```
 
-# Conformity (Jacobs & Campbell, 1961)
+# Iterated conformity (Jacobs & Campbell, 1961)
 
 ```{r jacobs-etal-fig2-preds}
 ```
 
-# Conformity (Jacobs & Campbell, 1961)
+# Iterated conformity (Jacobs & Campbell, 1961)
 
 ```{r jacobs-etal-fig2-data}
 ```
@@ -77,6 +77,21 @@ grid.arrange(
 # Stabilization of imitations
 
 ```{r telephone-stabilization}
+```
+
+# Question types
+
+```{r question-types}
+q_true_seed <- read_graphviz("true-seed", "wordsintransition")
+q_category_match <- read_graphviz("category-match", "wordsintransition") 
+q_specific_match <- read_graphviz("specific-match", "wordsintransition")
+
+grid.arrange(
+  q_true_seed,
+  q_category_match,
+  q_specific_match,
+  ncol = 1
+)
 ```
 
 # Guess the seed
@@ -101,3 +116,13 @@ grid.arrange(
 ```
 
 
+# 
+
+# Bouba/kiki effect
+
+<p><a href="https://commons.wikimedia.org/wiki/File:Booba-Kiki.svg#/media/File:Booba-Kiki.svg"><img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Booba-Kiki.svg" alt="Booba-Kiki.svg" height="112" width="220"></a>
+
+- Some words might begin with meanings everyone agrees on.
+- Illustrates the general phenomenon of _iconicity_.
+- Criticized for being a handpicked example.
+- What's the generative process for words like bouba and kiki?

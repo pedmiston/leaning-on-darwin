@@ -1,0 +1,5 @@
+#!/usr/bin/env Rscript
+library(devtools)
+install_github("pedmiston/crotchet")
+install_github("lupyanlab/words-in-transition", subdir = "wordsintransition")
+install_github("evoapps/wikischolar", subdir = "wikischolarlib")
