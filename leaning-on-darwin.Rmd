@@ -63,14 +63,10 @@ The perpetuation of an arbitrary tradition through several generations of a labo
 ```{r jacobs-etal-fig2-data}
 ```
 
-# Word origins
-
-Edmiston, Perlman, & Lupyan. (in prep). Creating words from iterated vocal imitation.
+# Telephone game
 
 ```{r telephone-setup, include=FALSE}
 ```
-
-# Telephone game
 
 ```{r}
 grid.arrange(
@@ -131,15 +127,65 @@ Unguided repetition of nonverbal imitations makes them more word-like.
 
 Supports theories of language evolution that value human imitative abilities.
 
-# Wikipedia
+# Problem solving
 
-Edmiston. (unpublished). Article quality as a selection pressure in the evolution of Wikipedia articles.
+```{r totems-setup, include=FALSE}
+```
 
-# Is Wikipedia getting better?
+```{r strategies}
+draw_graphviz("team-structures", "totems")
+```
+
+# Technological evolution (Hunt & Gray, 2003)
 
 ```{r}
-img("logo", width = 0.2)
+img("hunt_gray/fig4")
 ```
+
+# Innovation landscape
+
+```{r sample-landscape}
+```
+
+# Totems game
+
+```{r totems-game}
+draw_image("gameplay", "totems")
+```
+
+# Number of inventions
+
+```{r totems-inventory}
+```
+
+# Measuring differences in problem solving
+
+- Effectiveness (guesses per invention)
+- Redundancy (non-unique guesses)
+- Trajectories (unique paths)
+
+# Effectiveness: Guesses per invention
+
+```{r effectiveness}
+```
+
+# Redundancy: Non-unique guesses
+
+```{r redundancy}
+```
+
+# Trajectories: Exploration of landscape
+
+```{r trajectories}
+```
+
+# Prediction
+
+```{r strategies-exp2}
+draw_graphviz("team-structures-exp2", "totems")
+```
+
+# Is Wikipedia getting better?
 
 > My favorite way of checking this is to "click random article" on 10 articles, and go back and look at them a year ago, 5 years ago, 10 years ago. Every time I have tried, it's unambiguous: Wikipedia is getting better by this test. -- Jimbo Wales
 
@@ -195,80 +241,6 @@ img("elena_lenski/fitness")
 
 What do you like/dislike about the Wikipedia/evolution comparison?
 
-# Problem solving
-
-Edmiston, Derex, & Lupyan. (in prep). The impact of inheritance on problem solving ability.
-
-```{r totems-setup, include=FALSE}
-```
-
-# Technological evolution (Hunt & Gray, 2003)
-
-```{r}
-img("hunt_gray/fig4")
-```
-
-# Innovation landscape
-
-```{r sample-landscape}
-```
-
-# Team types
-
-```{r strategies}
-draw_graphviz("team-structures", "totems")
-```
-
-# Proof of principle
-
-```{r mountain-climbers}
-```
-
-# Problem solving as hill climbing
-
-Diachronic collaboration puts problem solvers in a different part of the problem space than they would have been likely to reach on their own.
-
-```{r mountain-climbers-walks}
-```
-
-# Totems game
-
-```{r totems-game}
-draw_image("gameplay", "totems")
-```
-
-# Number of inventions
-
-```{r totems-inventory}
-```
-
-# Measuring differences in problem solving
-
-- Effectiveness (guesses per invention)
-- Redundancy (non-unique guesses)
-- Trajectories (unique paths)
-
-# Effectiveness: Guesses per invention
-
-```{r effectiveness}
-```
-
-# Redundancy: Non-unique guesses
-
-```{r redundancy}
-```
-
-# Trajectories: Exploration of landscape
-
-```{r trajectories}
-```
-
-# Prediction
-
-```{r strategies-exp2}
-draw_graphviz("team-structures-exp2", "totems")
-```
-
 #
 
 Using evolutionary principles to make sense of  
@@ -279,3 +251,13 @@ Using evolutionary principles to make sense of
 Pierce Edmiston  
 <pedmiston@wisc.edu>  
 [github.com/pedmiston/leaning-on-darwin](https://github.com/pedmiston/leaning-on-darwin)
+
+# Proof of principle
+
+```{r mountain-climbers}
+```
+
+# Problem solving as hill climbing
+
+```{r mountain-climbers-walks}
+```
