@@ -42,7 +42,7 @@ dir("R", "*.R", full.names = TRUE) %>% sapply(read_chunk)
 
 # Evolution in the psychology department
 
-Jacobs & Campbell (1961) _J Abnorm Soc Psychol_.  
+Jacobs & Campbell. (1961). _J Abnorm Soc Psychol_.  
 The perpetuation of an arbitrary tradition through several generations of a laboratory microculture.
 
 ```{r jacobs-etal-setup, include=FALSE}
@@ -63,7 +63,7 @@ The perpetuation of an arbitrary tradition through several generations of a labo
 ```{r jacobs-etal-fig2-data}
 ```
 
-# Telephone game
+# Creating words from iterated vocal imitation
 
 ```{r telephone-setup, include=FALSE}
 ```
@@ -85,6 +85,12 @@ draw_image("monitor-imitations", "wordsintransition")
 # Imitations stabilize over generations
 
 ```{r telephone-stabilization}
+```
+
+# Guess the seed game
+
+```{r guess-the-seed}
+draw_image("match-imitations-gui")
 ```
 
 # Question types
