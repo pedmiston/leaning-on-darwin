@@ -21,7 +21,9 @@ opts_chunk$set(
   message=FALSE,
   warning=FALSE,
   cache=TRUE,
-  results="hide"
+  cache.path = ".cache/",
+  results="hide",
+  fig.path = "figs/"
 )
 
 library(magrittr)

@@ -1,6 +1,6 @@
 .Rproj.user
 *cache/
-*files/
+*figs/
 *.ipynb_checkpoints/
 
 # env
