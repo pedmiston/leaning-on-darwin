@@ -47,7 +47,6 @@ quad_preds <- unique(random1000[, c("age", "age_sqr")]) %>%
 quality_by_age_plot <- (gg_base %+% random1000) +
   geom_line(aes(group = title), color = color_scheme[3], alpha = 0.2) +
   geom_line(data = quad_preds, color = color_scheme[2], size = 1.5) +
-  geom_point(stat = "summary", fun.y = "mean", size = 3, shape = 1) +
   ggtitle("Quality by article age")
 
 # Article quality by generations

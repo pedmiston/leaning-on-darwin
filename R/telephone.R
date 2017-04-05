@@ -239,7 +239,7 @@ preds <- cbind(x_preds, y_preds) %>%
 dodger <- position_dodge(width = 0.1)
 
 scale_linetype_distractors <- scale_linetype_manual(
-  "", values = c("longdash", "dotdash")
+  "", values = c("dotdash", "longdash")
 )
 
 gg_match_transcriptions <- ggplot(preds) +

@@ -68,7 +68,8 @@ gg_differing_skills_final_fitness <- ggplot(max_fitness) +
 
 grid.arrange(gg_differing_skills_timeline,
              gg_differing_skills_final_fitness,
-             nrow = 1)
+             nrow = 1,
+             widths = c(0.6, 0.4))
 
 detach("package:mountainclimbers", unload=TRUE)
 

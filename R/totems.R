@@ -59,7 +59,7 @@ totems_theme["base_theme"] <- list(base_theme)
 scale_x_inventory_size <- scale_x_continuous("Inventory size",
                                              breaks = 6:15)
 
-# ---- landscape-sample
+# ---- sample-landscape
 # Trajectories plot
 data("BotsExplore")
 sample_trajectories <- BotsExplore %>%

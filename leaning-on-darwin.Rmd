@@ -1,5 +1,7 @@
 ---
-output: beamer_presentation
+output:
+  beamer_presentation:
+    toc: false
 ---
 
 # Cultural evolution
@@ -61,10 +63,14 @@ The perpetuation of an arbitrary tradition through several generations of a labo
 ```{r jacobs-etal-fig2-data}
 ```
 
-# Telephone game
+# Word origins
+
+Edmiston, Perlman, & Lupyan. (in prep). Creating words from iterated vocal imitation.
 
 ```{r telephone-setup, include=FALSE}
 ```
+
+# Telephone game
 
 ```{r}
 grid.arrange(
@@ -125,21 +131,22 @@ Unguided repetition of nonverbal imitations makes them more word-like.
 
 Supports theories of language evolution that value human imitative abilities.
 
+# Wikipedia
+
+Edmiston. (unpublished). Article quality as a selection pressure in the evolution of Wikipedia articles.
+
 # Is Wikipedia getting better?
+
+```{r}
+img("logo", width = 0.2)
+```
 
 > My favorite way of checking this is to "click random article" on 10 articles, and go back and look at them a year ago, 5 years ago, 10 years ago. Every time I have tried, it's unambiguous: Wikipedia is getting better by this test. -- Jimbo Wales
 
-```{r}
-grid::grid.newpage()
-png::readPNG("img/logo.png") %>%
-  grid::rasterGrob(width=0.5, height=0.5) %>%
-  grid::grid.draw()
-```
-
-# Reasons Wikipedia is hard to measure
+# Wikipedia is hard to measure
 
 - **Size.** Over 5 million articles in English.
-- **Expertise.** e.g., [Hurricane Claudette](https://en.wikipedia.org/wiki/Hurricane_Claudette_(2003).
+- **Expertise.** e.g., [Hurricane Claudette](https://en.wikipedia.org/wiki/Hurricane_Claudette_(2003)).
 - **Always changing.** Articles are never considered complete.
 
 # Wikipedia is alive
@@ -169,7 +176,9 @@ grid.arrange(
 
 # Experimental evolution (Elena & Lenski, 2003)
 
-![](img/elena_lenski/fitness.png)
+```{r}
+img("elena_lenski/fitness")
+```
 
 # Wikipedia article quality
 
@@ -186,12 +195,18 @@ grid.arrange(
 
 What do you like/dislike about the Wikipedia/evolution comparison?
 
-# Technological evolution (Hunt & Gray, 2003)
+# Problem solving
 
-```{r totems-setup}
+Edmiston, Derex, & Lupyan. (in prep). The impact of inheritance on problem solving ability.
+
+```{r totems-setup, include=FALSE}
 ```
 
-![](img/hunt_gray/fig4.png)
+# Technological evolution (Hunt & Gray, 2003)
+
+```{r}
+img("hunt_gray/fig4")
+```
 
 # Innovation landscape
 
@@ -209,17 +224,25 @@ draw_graphviz("team-structures", "totems")
 ```{r mountain-climbers}
 ```
 
-# Random walks
+# Problem solving as hill climbing
+
+Diachronic collaboration puts problem solvers in a different part of the problem space than they would have been likely to reach on their own.
 
 ```{r mountain-climbers-walks}
 ```
 
-# Number of innovations
+# Totems game
+
+```{r totems-game}
+draw_image("gameplay", "totems")
+```
+
+# Number of inventions
 
 ```{r totems-inventory}
 ```
 
-# Solving the problem differently
+# Measuring differences in problem solving
 
 - Effectiveness (guesses per invention)
 - Redundancy (non-unique guesses)
@@ -246,7 +269,7 @@ draw_graphviz("team-structures", "totems")
 draw_graphviz("team-structures-exp2", "totems")
 ```
 
-# Summary
+#
 
 Using evolutionary principles to make sense of  
 **word origins**,  
