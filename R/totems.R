@@ -4,6 +4,7 @@ source("R/setup.R")
 library(totems)
 data("TotemsTrials")
 data("TotemsPlayers")
+data("TotemsSampled")
 data("TotemsTeams")
 
 TotemsTrials %<>%
@@ -16,12 +17,6 @@ TotemsPlayers %<>%
 TotemsTeams %<>%
   totems::recode_strategy()
 
-# Get team inventories at particular time points
-TotemsSampled <- TotemsTrials %>%
-  group_by(TeamID) %>%
-  do({ get_closest_trials_to_times(., times = seq(0, 50 * 60, by = 60)) }) %>%
-  filter(!(Strategy == "Synchronic" & SampledTime > 25*60))
-
 TotemsSampledMeans <- TotemsSampled %>%
   group_by(Strategy, SampledTime) %>%
   summarize(NumInnovations = mean(NumInnovations)) %>%
@@ -29,6 +24,18 @@ TotemsSampledMeans <- TotemsSampled %>%
   totems::recode_strategy() %>%
   guess_generation("SampledTime") %>%
   recode_groups_by_generation()
+
+trial0 <- data_frame(
+  Strategy = c("Diachronic", "Diachronic", "Synchronic", "Isolated"),
+  Generation = c(1, 2, 1, 1),
+  SampledTime = c(0, 60*25, 0, 0),
+  NumInnovations = 0
+) %>%
+  recode_strategy() %>%
+  recode_groups_by_generation()
+
+TotemsSampledMeans %<>%
+  bind_rows(trial0)
 
 # Summarize guesses at each stage (each inventory)
 TeamInventoryGuesses <- TotemsTrials %>%
@@ -58,6 +65,73 @@ totems_theme["base_theme"] <- list(base_theme)
 
 scale_x_inventory_size <- scale_x_continuous("Inventory size",
                                              breaks = 6:15)
+
+# ---- types-of-time
+diachronic <- data_frame(
+  Strategy = "Diachronic",
+  CalendarHours = 1:100,
+  LaborHours = CalendarHours,
+  Person = rep(c(1, 2), each = 50)
+)
+
+isolated <- diachronic %>%
+  mutate(
+    Strategy = "Isolated",
+    Person = 1
+  )
+
+synchronic <- data_frame(
+  Strategy = "Synchronic",
+  CalendarHours = 1:50,
+  LaborHours = CalendarHours * 2,
+  Person = 1
+)
+
+time <- rbind(diachronic, synchronic, isolated) %>%
+  group_by(Strategy, Person) %>%
+  mutate(PersonHours = 1:n()) %>%
+  ungroup() %>%
+  recode_strategy() %>%
+  mutate(
+    # Separate Diachronic and Isolated lines
+    LaborHours = ifelse(Strategy == "Synchronic", LaborHours,
+                        ifelse(Strategy == "Diachronic", LaborHours + 0.8, LaborHours - 0.8))
+  )
+
+axis_breaks <- c(0, 50, 100)
+axis_labels <- c(0, expression(1/2), 1)
+
+gg_time <- ggplot(time, aes(CalendarHours, LaborHours)) +
+  geom_line(aes(color = StrategyLabel), size = 1.2) +
+  scale_x_continuous("Calendar hours", breaks = axis_breaks, labels = axis_labels) +
+  scale_y_continuous("Labor hours", breaks = axis_breaks, labels = axis_labels) +
+  totems_theme["scale_color_strategy"] +
+  scale_linetype_manual(values = c(1, 1, 2)) +
+  guides(color = guide_legend("", reverse = TRUE), linetype = "none") +
+  totems_theme["base_theme"] +
+  theme(legend.position = c(0.75, 0.2))
+
+time %<>%
+  mutate(StrategyIsolated = factor(Strategy, levels = c("Synchronic", "Diachronic", "Isolated")))
+
+gg_person <- ggplot(time) +
+  aes(StrategyIsolated, PersonHours) +
+  geom_bar(aes(fill = StrategyLabel), stat = "summary", fun.y = "max",
+           alpha = 0.8) +
+  scale_x_discrete("") +
+  scale_y_continuous("Learning hours", breaks = axis_breaks, labels = axis_labels) +
+  totems_theme["scale_fill_strategy"] +
+  totems_theme["base_theme"] +
+  theme(legend.position = "none",
+        panel.grid.major.x = element_blank())
+
+gridExtra::grid.arrange(
+  read_graphviz("team-structures", package = "totems"),
+  gg_time,
+  gg_person,
+  nrow = 1,
+  widths = c(0.2, 0.4, 0.4)
+)
 
 # ---- sample-landscape
 # Trajectories plot
@@ -322,3 +396,44 @@ trajectory_count_plot <- ggplot(TrajectoryCounts) +
     panel.grid.major.x = element_blank()
   )
 trajectory_count_plot
+
+# ---- totems-attempts
+team_attempts_mod <- lm(
+  NumGuesses ~ Diachronic_v_Synchronic + Diachronic_v_Isolated,
+  data = TotemsTeams
+)
+
+team_attempts_preds <- get_lm_mod_preds(team_attempts_mod) %>%
+  rename(NumGuesses = fit, SE = se.fit) %>%
+  recode_strategy()
+
+attempts_plot <- ggplot(TotemsTeams) +
+  aes(StrategyLabel, NumGuesses) +
+  geom_point(aes(color = StrategyLabel),
+             position = position_jitter(width = 0.4)) +
+  geom_bar(aes(fill = StrategyLabel), stat = "summary", fun.y = "mean",
+           alpha = 0.6) +
+  geom_errorbar(aes(ymin = NumGuesses - SE, ymax = NumGuesses + SE),
+                data = team_attempts_preds, width = 0.2) +
+  totems_theme["scale_x_strategy"] +
+  scale_y_continuous("Number of attempts") +
+  totems_theme["scale_color_strategy"] +
+  totems_theme["scale_fill_strategy"] +
+  totems_theme["base_theme"] +
+  theme(legend.position = "none")
+
+performance_by_attempts_plot <- ggplot(TotemsTeams) +
+  aes(NumGuesses, NumInnovations, color = StrategyLabel) +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE) +
+  scale_x_continuous("Number of attempts") +
+  scale_y_continuous("Number of inventions") +
+  totems_theme["scale_color_strategy"] +
+  totems_theme["base_theme"] +
+  theme(legend.position = "top")
+
+grid.arrange(
+  attempts_plot,
+  performance_by_attempts_plot,
+  nrow = 1
+)

@@ -50,6 +50,4 @@ preds <- base_plot +
 preds %+% filter(df, is_setup == 1)
 
 # ---- jacobs-etal-fig2-data
-base_plot +
-  geom_point(aes(shape = group)) +
-  geom_line(aes(lty = group))
+base_plot

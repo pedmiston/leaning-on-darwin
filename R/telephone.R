@@ -115,7 +115,7 @@ grid.arrange(
   nrow = 1
 )
 
-# ---- guess-the-seed
+# ---- matching-accuracy
 data("imitation_matches")
 imitation_matches %<>%
   filter(

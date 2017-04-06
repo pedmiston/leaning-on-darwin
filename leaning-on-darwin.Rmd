@@ -42,6 +42,15 @@ dir("R", "*.R", full.names = TRUE) %>% sapply(read_chunk)
 - **Iteration** is "the repetition of a process or utterance."
 - When can iteration be trusted?
 
+```{r iteration, engine="dot"}
+digraph {
+  rankdir=LR
+  node[label="" shape="circle" style="filled"]
+  a -> b -> c -> d -> e
+  e[style=invis]
+}
+```
+
 # Evolution in the psychology department
 
 Jacobs & Campbell. (1961). _J Abnorm Soc Psychol_.  
@@ -89,13 +98,13 @@ draw_image("monitor-imitations", "wordsintransition")
 ```{r telephone-stabilization}
 ```
 
-# Guess the seed game
+# "Guess the seed" game
 
 ```{r guess-the-seed}
-draw_image("match-imitations-gui")
+draw_image("match-imitations-gui", "wordsintransition")
 ```
 
-# Question types
+# "Guess the seed" question types
 
 ```{r question-types}
 q_true_seed <- read_graphviz("true-seed", "wordsintransition")
@@ -110,9 +119,9 @@ grid.arrange(
 )
 ```
 
-# Guess the seed
+# Matching accuracy
 
-```{r guess-the-seed}
+```{r matching-accuracy}
 ```
 
 # Invented words
@@ -125,7 +134,7 @@ grid.arrange(
 ```{r category-learning}
 ```
 
-# Summary
+# Summary: Word origins
 
 Unguided repetition of nonverbal imitations makes them more word-like.
 
@@ -133,21 +142,27 @@ Unguided repetition of nonverbal imitations makes them more word-like.
 - Imitations and transcriptions gradually lose resemblance to source.
 - As imitations transition into words they become more categorical.
 
-Supports theories of language evolution that value human imitative abilities.
-
-# Problem solving
-
-```{r totems-setup, include=FALSE}
-```
-
-```{r strategies}
-draw_graphviz("team-structures", "totems")
+```{r iteration, engine="dot"}
 ```
 
 # Technological evolution (Hunt & Gray, 2003)
 
+```{r totems-setup, include=FALSE}
+```
+
 ```{r}
 img("hunt_gray/fig4")
+```
+
+# Strategies
+
+```{r types-of-time, fig.height=4}
+```
+
+# Innovation problem solving (Derex & Boyd, 2015)
+
+```{r sample-inventory, fig.align="center"}
+draw_graphviz_with_images("inventory", "totems")
 ```
 
 # Innovation landscape
@@ -187,25 +202,69 @@ draw_image("gameplay", "totems")
 ```{r trajectories}
 ```
 
-# Prediction
+# Summary: Diachronic inheritance
 
-```{r strategies-exp2}
-draw_graphviz("team-structures-exp2", "totems")
+- Diachronic teamwork is the least redundant.
+- Synchronic teamwork results in the most attempts.
+
+```{r iteration, engine="dot"}
+```
+
+# Total attempts
+
+```{r totems-attempts}
+```
+
+# Iteration versus inheritance
+
+```{r iteration-v-inheritance, engine="dot"}
+digraph {
+  rankdir=LR
+  node[label="" shape="circle" style="filled"]
+  a1
+  a -> b -> c -> d -> e
+  a1 -> b1 -> c1 -> d1 -> e1
+  e, e1[style=invis]
+  b1, c1, d1[style=invis width=0.1]
+}
+```
+
+```{r kaggle-setup, include=FALSE}
+```
+
+# Kaggle competitions
+
+```{r titanic}
+```
+
+# Kaggle competition leaderboards
+
+```{r leaderboards}
+```
+
+# Submission interval
+
+```{r submission-interval}
+```
+
+# Types of strategies
+
+```{r team-types-quartet}
+```
+
+# Iteration as a strategy
+
+```{r team-types}
 ```
 
 # Is Wikipedia getting better?
 
 > My favorite way of checking this is to "click random article" on 10 articles, and go back and look at them a year ago, 5 years ago, 10 years ago. Every time I have tried, it's unambiguous: Wikipedia is getting better by this test. -- Jimbo Wales
 
-# Wikipedia is hard to measure
+# Wikipedia by the numbers
 
-- **Size.** Over 5 million articles in English.
-- **Expertise.** e.g., [Hurricane Claudette](https://en.wikipedia.org/wiki/Hurricane_Claudette_(2003)).
-- **Always changing.** Articles are never considered complete.
-
-# Wikipedia is alive
-
-- [7th most popular website in the world.](http://www.alexa.com/siteinfo/wikipedia.org)
+- 5 million articles in English.
+- [5th most popular website in the world.](http://www.alexa.com/siteinfo/wikipedia.org)
 - [6-10 edits per second.](https://tools.wmflabs.org/wmcounter/)
 - [700 new articles per day.](https://tools.wmflabs.org/wmcharts/wmchart0002.php)
 
@@ -216,6 +275,8 @@ draw_graphviz("team-structures-exp2", "totems")
 - New editors do not like getting reverted.
 - All editors are protective of their own edits.
 - Chance of being reverted doesn't change.
+
+(For more, start with [Aaron Halfaker](http://www-users.cs.umn.edu/~halfak/)).
 
 # Wikipedia article editing as an evolutionary strategy
 
@@ -234,7 +295,15 @@ grid.arrange(
 img("elena_lenski/fitness")
 ```
 
-# Wikipedia article quality
+# Predicting article quality (Warncke-Wang et al., 2015)
+
+```{r wikipedia-quality-classes, fig.width=2.5, fig.align="center"}
+draw_image("wikipedia-quality-classes", "wikischolarlib")
+```
+
+Authority/Reputation, **Completeness**, Complexity, **Informativeness**, Consistency, Currency, Volatility, Diversity, **NumHeadings**, **ArticleLength**, **NumReferences**, NumWikilinks, HasInfobox, ...
+
+# Monotonic increases in Wikipedia article quality
 
 ```{r wikipedia-quality}
 ```
@@ -245,9 +314,18 @@ img("elena_lenski/fitness")
 - Separate purifying from positive selection.
 - Expand to open source software projects.
 
-# Discussion question
+# Discussion
 
-What do you like/dislike about the Wikipedia/evolution comparison?
+What do you think of the Wikipedia/evolution comparison?
+
+# Summary
+
+```{r iteration, engine="dot"}
+```
+
+- Word origins: Imitations transition to words through repetition
+- Problem solving: Diachronic inheritance, Iteration as a strategy
+- Wikipedia article editing as an evolutionary strategy
 
 #
 
