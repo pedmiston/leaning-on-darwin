@@ -23,7 +23,8 @@ opts_chunk$set(
   cache=TRUE,
   cache.path = ".cache/",
   results="hide",
-  fig.path = "figs/"
+  fig.path = "figs/",
+  dev = c("pdf", "png")
 )
 
 library(magrittr)
